@@ -58,9 +58,6 @@ router.post(
           imgName,
           imgPath,
           publicId,
-          // passwordHash => this is the key from the User model
-          //     ^
-          //     |            |--> this is placeholder (how we named returning value from the previous method (.hash()))
           passwordHash: hashedPassword,
         });
       })
@@ -94,6 +91,7 @@ router.get("/login", isLoggedOut, (req, res) => res.render("auth/login"));
 
 // .post() login route ==> to process form data
 router.post("/login", isLoggedOut, (req, res, next) => {
+  console.log(req.session.currentUser);
   const { email, password } = req.body;
 
   if (email === "" || password === "") {
@@ -102,7 +100,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
     return;
   }
-
+  
   User.findOne({ email })
     .then((user) => {
       if (!user) {
@@ -125,11 +123,13 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 ////////////////////////////////////////////////////////////////////////
 
 router.post("/logout", isLoggedIn, (req, res) => {
+  console.log(req.session.user);
   req.session.destroy();
   res.redirect("/");
 });
 
 router.get("/user-profile", isLoggedIn, (req, res) => {
+  console.log(req.session.user);
   res.render("users/user-profile");
 });
 
