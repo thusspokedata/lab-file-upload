@@ -84,7 +84,7 @@ router.get("/login", isLoggedOut, (req, res) => res.render("auth/login"));
 
 // .post() login route ==> to process form data
 router.post("/login", isLoggedOut, (req, res, next) => {
-  console.log(req.session.currentUser);
+  // console.log(`esto es lo que busco:::: ${req.session.currentUser}`);
   const { email, password } = req.body;
   if (email === "" || password === "") {
     res.render("auth/login", {
@@ -100,7 +100,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         });
         return;
       } else if (bcryptjs.compareSync(password, user.passwordHash)) {
-        req.session.user = user;
+        req.session.currentUser = user;
+        console.log(`esto es lo que busco:::: ${req.session.currentUser}`);
         res.redirect("/user-profile");
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password." });

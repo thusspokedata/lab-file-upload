@@ -1,12 +1,11 @@
 <h1>All Posts 🚀</h1>
 {{#each posts}}
-  <h2>{{title}}</h2>
-  <h4>{{content}}</h4>
-  <img src="{{imgPath}}" alt="Poster for {{title}}" height="200px" />
+<a href="/post-details/{{_id}}">
+  <img src="{{imgPath}}" alt="Poster for {{title}}" height="200px" /></a>
   {{!-- <h3>Delete this movie
     <a href="/movie/delete/{{_id}}">❌</a>
   </h3> --}}
 {{else}}
-  <h2>There are no movies yet 🙀</h2>
+  <h2>There are no pots yet 🙀</h2>
 {{/each}}
 <a href="/post-form">Add a post</a>

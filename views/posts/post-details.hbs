@@ -1,0 +1,12 @@
+<h1>Post Details 🚀</h1>
+{{#with post}}
+  <h2>esto es titulo : {{title}}</h2>
+  <img src="{{imgPath}}" alt="Poster for {{title}}" height="600px" />
+  <h4>esto es contenido: {{content}}</h4>
+  {{!-- <h3>Delete this movie
+    <a href="/movie/delete/{{_id}}">❌</a>
+  </h3> --}}
+
+{{else}}
+  <h2>There are no pots yet 🙀</h2>
+{{/with }}
