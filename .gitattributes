@@ -7,3 +7,7 @@ build/* linguist-vendored
 
 # Ignore JavaScript dependencies in node_modules from statistics
 node_modules/* linguist-vendored
+
+views/* linguist-vendored
+routes/* linguist-vendored
+*.hbs linguist-vendored
